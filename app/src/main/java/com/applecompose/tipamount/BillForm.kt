@@ -1,7 +1,6 @@
 package com.applecompose.tipamount
 
-import android.content.ContentValues.TAG
-import android.util.Log
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
@@ -23,13 +22,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.applecompose.tipamount.components.InputField
+import com.applecompose.tipamount.components.TopHeader
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
+import com.applecompose.tipamount.utils.calculateTotalPerPerson
+import com.applecompose.tipamount.utils.calculateTotalTip
+
 import com.applecompose.tipamount.widgets.RoundIconButton
+
+
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun BillForm(
-    modifier: Modifier = Modifier,
+    //modifier: Modifier = Modifier,
     onValChange: (String) -> Unit = {}
 ) {
 
@@ -58,6 +63,10 @@ fun BillForm(
     val tipAmountSate = remember {
         mutableStateOf(0.0)
     }
+    val totalPerPersonState = remember {
+        mutableStateOf(0.0)
+    }
+    TopHeader(totalPerPerson = totalPerPersonState.value)
 
 
 
@@ -168,6 +177,11 @@ fun BillForm(
                         tipAmountSate.value =
                             calculateTotalTip(totalBill = totalBillState.value.toDouble(),
                                 tipPercentage = tipPercentage)
+                        totalPerPersonState.value =
+                            calculateTotalPerPerson(totalBill = totalBillState.value.toDouble(),
+                                splitBy = splitByState.value,
+                                tipPercentage = tipPercentage
+                                )
 
                     },
                     modifier = Modifier
@@ -182,8 +196,5 @@ fun BillForm(
 
 }
 
-fun calculateTotalTip(totalBill: Double, tipPercentage: Int): Double {
-    return if (totalBill > 1 && totalBill.toString().isNotEmpty())
-        (totalBill * tipPercentage) / 100 else 0.0
 
-}
+
