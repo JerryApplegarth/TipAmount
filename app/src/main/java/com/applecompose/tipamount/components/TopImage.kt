@@ -25,7 +25,7 @@ fun TopImage() {
             painter = painterResource(id = R.drawable.food_500),
             contentDescription = "Food icon image",
             modifier = Modifier
-                .height(200.dp)
+                .height(140.dp)
 
         )
 

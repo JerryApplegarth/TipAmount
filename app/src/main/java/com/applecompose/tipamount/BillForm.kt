@@ -1,11 +1,14 @@
 package com.applecompose.tipamount
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Slider
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -40,10 +43,17 @@ fun BillForm(
     }
     val keyboardController = LocalSoftwareKeyboardController.current
 
+
+
     val splitByState = remember {
         mutableStateOf(1)
     }
     val range = IntRange(start = 1, endInclusive = 100)
+
+    val sliderPositionState = remember {
+        mutableStateOf(0f)
+    }
+    val tipPercentage = (sliderPositionState.value * 30).toInt()
 
 
     Surface(
@@ -67,65 +77,95 @@ fun BillForm(
                 onAction = KeyboardActions {
                     if (!validState) return@KeyboardActions
                     onValChange(totalBillState.value.trim())
-
                     keyboardController?.hide()
-
                 }
             )
-            if (validState) {
+            Row(
+                modifier = Modifier
+                    .padding(3.dp),
+                horizontalArrangement = Arrangement.Start
+            )
+            {
+                Text(
+                    text = "Split",
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
+                Spacer(modifier = Modifier.width(120.dp))
                 Row(
                     modifier = Modifier
-                        .padding(3.dp),
-                    horizontalArrangement = Arrangement.Start
-                )
-                {
+                        .padding(horizontal = 3.dp),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    RoundIconButton(
+                        imageVector = Icons.Default.Remove,
+                        onClick = {
+                            splitByState.value =
+                                if (splitByState.value > 1) splitByState.value - 1
+                                else 1
+
+                        })
+                    Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "Split",
+                        text = splitByState.value.toString(),
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
+                            .padding(start = 9.dp, end = 9.dp)
                     )
-                    Spacer(modifier = Modifier.width(120.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(horizontal = 3.dp),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        RoundIconButton(
-                            imageVector = Icons.Default.Remove,
-                            onClick = {
-                                splitByState.value =
-                                    if (splitByState.value > 1) splitByState.value - 1
-                                    else 1
 
-                            })
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = splitByState.value.toString(),
-                            modifier = Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(start = 9.dp, end = 9.dp)
-                        )
+                    RoundIconButton(
+                        imageVector = Icons.Default.Add,
+                        onClick = {
+                            if (splitByState.value < range.last) {
+                                splitByState.value = splitByState.value + 1
 
-                        RoundIconButton(
-                            imageVector = Icons.Default.Add,
-                            onClick = {
-                                if (splitByState.value < range.last) {
-                                    splitByState.value = splitByState.value + 1
-
-                                } else 1
-                            }
-                        )
-
-                    }
-
+                            } else 1
+                        }
+                    )
 
                 }
 
-            } else {
-                Box {
-                    Text(text = "Nothing")
 
-                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            // Tip Row
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 3.dp, vertical = 8.dp)
+            ) {
+                Text(
+                    text = "Tip",
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterVertically)
+                )
+                Spacer(modifier = Modifier.width(180.dp))
+                Text(
+                    text = "$33.00",
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterVertically)
+                )
+
+            }
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "$tipPercentage %"
+                )
+                Spacer(modifier = Modifier.height(14.dp))
+                Slider(
+                    value = sliderPositionState.value,
+                    onValueChange = { newVal ->
+                        sliderPositionState.value = newVal
+
+                    },
+                    modifier = Modifier
+                        .padding(start = 16.dp, end = 16.dp),
+                    steps = 10,
+
+
+                    )
             }
         }
     }
