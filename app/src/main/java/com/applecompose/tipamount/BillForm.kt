@@ -55,6 +55,13 @@ fun BillForm(
     }
     val tipPercentage = (sliderPositionState.value * 30).toInt()
 
+    val tipAmountSate = remember {
+        mutableStateOf(0.0)
+    }
+
+
+
+
 
     Surface(
         modifier = Modifier
@@ -140,7 +147,7 @@ fun BillForm(
                 )
                 Spacer(modifier = Modifier.width(180.dp))
                 Text(
-                    text = "$33.00",
+                    text = "$ ${tipAmountSate.value}",
                     modifier = Modifier
                         .align(alignment = Alignment.CenterVertically)
                 )
@@ -158,6 +165,9 @@ fun BillForm(
                     value = sliderPositionState.value,
                     onValueChange = { newVal ->
                         sliderPositionState.value = newVal
+                        tipAmountSate.value =
+                            calculateTotalTip(totalBill = totalBillState.value.toDouble(),
+                                tipPercentage = tipPercentage)
 
                     },
                     modifier = Modifier
@@ -169,5 +179,11 @@ fun BillForm(
             }
         }
     }
+
+}
+
+fun calculateTotalTip(totalBill: Double, tipPercentage: Int): Double {
+    return if (totalBill > 1 && totalBill.toString().isNotEmpty())
+        (totalBill * tipPercentage) / 100 else 0.0
 
 }
