@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tip Amount</string>
+
+    <string name="apple_apps">"Applegarth's Apps"</string>
+
+    <string name="buy_me_coffee">"Buy me a Coffee "</string>
+    <string name="http_address"> "https://www.buymeacoffee.com/JerryApplegarth "</string>
+    <string name="apple_logo">"Apple Logo"</string>
+
+</resources>
+
