@@ -6,12 +6,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.applecompose.tipamount.BillForm
 
 
-@Preview
-@Composable
-fun MainContent() {
-    BillForm(){billAmt ->
-        Log.d("BILL", "MainContent: $billAmt")
-
-    }
-
-}
+//@Preview
+//@Composable
+//fun MainContent() {
+//    BillForm(){billAmt ->
+//        Log.d("BILL", "MainContent: $billAmt")
+//
+//    }
+//
+//}

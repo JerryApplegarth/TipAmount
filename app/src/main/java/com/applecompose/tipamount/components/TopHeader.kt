@@ -20,7 +20,7 @@ import com.applecompose.tipamount.ui.theme.newBackgroundColor
 
 @Preview
 @Composable
-fun TopHeader(totalPerPerson: Double = 57.50) {
+fun TopHeader(totalPerPerson: Double = 0.00) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
