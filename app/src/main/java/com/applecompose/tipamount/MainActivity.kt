@@ -68,14 +68,14 @@ fun MainScreen() {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        TopImage()
-        TopHeader(totalPerPerson = totalPerPersonState.value)
+
         BillForm(
             splitByState = splitByState,
             range = range,
             tipAmountSate = tipAmountSate,
             totalPerPersonState = totalPerPersonState
         )
+
         AppLogo()
 
 

@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-val IconButtonSizeModifier = Modifier.size(40.dp)
+val IconButtonSizeModifier = Modifier.size(50.dp)
 
 @Composable
 fun RoundIconButton(
@@ -27,7 +27,7 @@ fun RoundIconButton(
     elevation: Dp = 4.dp,
     ) {
     Card(
-        modifier = Modifier
+        modifier
             .padding(4.dp)
             .clickable { onClick.invoke() }
             .then(IconButtonSizeModifier),

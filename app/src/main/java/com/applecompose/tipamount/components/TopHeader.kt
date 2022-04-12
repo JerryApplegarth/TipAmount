@@ -20,9 +20,9 @@ import com.applecompose.tipamount.ui.theme.newBackgroundColor
 
 @Preview
 @Composable
-fun TopHeader(totalPerPerson: Double = 0.00) {
+fun TopHeader(totalPerPerson: Double = 0.00, modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier
+        modifier
             .fillMaxWidth()
             .height(150.dp)
             .padding(16.dp)
@@ -32,7 +32,7 @@ fun TopHeader(totalPerPerson: Double = 0.00) {
     ) {
 
         Column(
-            modifier = Modifier
+            modifier
                 .padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

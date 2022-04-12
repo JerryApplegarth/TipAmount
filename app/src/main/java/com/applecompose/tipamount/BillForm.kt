@@ -23,10 +23,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.applecompose.tipamount.components.InputField
+import com.applecompose.tipamount.components.TopHeader
+import com.applecompose.tipamount.components.TopImage
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
 import com.applecompose.tipamount.utils.calculateTotalPerPerson
 import com.applecompose.tipamount.utils.calculateTotalTip
 import com.applecompose.tipamount.widgets.RoundIconButton
+import org.w3c.dom.Text
 
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -53,6 +56,9 @@ fun BillForm(
     }
     val tipPercentage = (sliderPositionState.value * 30).toInt()
 
+    TopImage()
+    TopHeader(totalPerPerson = totalPerPersonState.value)
+
 
 
 
@@ -64,7 +70,7 @@ fun BillForm(
         border = BorderStroke(2.dp, color = MaterialTheme.colors.newBackgroundColor)
     ) {
         Column(
-            modifier = modifier
+            modifier
                 .padding(6.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
@@ -89,12 +95,14 @@ fun BillForm(
                 {
                     Text(
                         text = "Split",
-                        modifier = modifier
+                        modifier
                             .align(Alignment.CenterVertically)
                     )
-                    Spacer(modifier = Modifier.width(120.dp))
+                    Spacer(modifier
+                        .width(120.dp))
+                    //Split row
                     Row(
-                        modifier = modifier
+                        modifier
                             .padding(horizontal = 3.dp),
                         horizontalArrangement = Arrangement.End
                     ) {
@@ -111,12 +119,12 @@ fun BillForm(
                                         tipPercentage = tipPercentage
                                     )
                             })
-                        Spacer(modifier = modifier.width(4.dp))
+                        Spacer(modifier.width(4.dp))
                         Text(
                             text = splitByState.value.toString(),
-                            modifier = modifier
+                            modifier
                                 .align(Alignment.CenterVertically)
-                                .padding(start = 9.dp, end = 9.dp)
+                                .padding(start = 12.dp, end = 12.dp)
                         )
                         RoundIconButton(
                             imageVector = Icons.Default.Add,
@@ -134,21 +142,22 @@ fun BillForm(
                         )
                     }
                 }
-                Spacer(modifier = modifier.height(8.dp))
+                Spacer(modifier.height(8.dp))
                 // Tip Row
                 Row(
-                    modifier = modifier
+                    modifier
                         .padding(horizontal = 3.dp, vertical = 8.dp)
                 ) {
                     Text(
                         text = "Tip",
-                        modifier = modifier
+                        modifier
                             .align(alignment = Alignment.CenterVertically)
                     )
-                    Spacer(modifier = modifier.width(180.dp))
-                    Text(
+                    Spacer(modifier.width(180.dp))
+                    //val tipAmountSateRounded: Double = String.format("%.2f", tipAmountSate.value).toDouble()
+                            Text(
                         text = "$ ${tipAmountSate.value}",
-                        modifier = modifier
+                        modifier
                             .align(alignment = Alignment.CenterVertically)
                     )
                 }
@@ -159,7 +168,7 @@ fun BillForm(
                     Text(
                         text = "$tipPercentage %"
                     )
-                    Spacer(modifier = modifier.height(14.dp))
+                    Spacer(modifier.height(12.dp))
                     Slider(
                         value = sliderPositionState.value,
                         onValueChange = { newVal ->
@@ -178,7 +187,7 @@ fun BillForm(
                         },
                         modifier = modifier
                             .padding(start = 16.dp, end = 16.dp),
-                        steps = 10,
+                        steps = 0,
                     )
                 }
             } else {
