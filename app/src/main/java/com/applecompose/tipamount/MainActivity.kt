@@ -36,6 +36,7 @@ import com.applecompose.tipamount.utils.calculateTotalTip
 import com.applecompose.tipamount.widgets.RoundIconButton
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -51,6 +52,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Composable
 fun MainScreen() {
@@ -84,11 +86,3 @@ fun MainScreen() {
 }
 
 
-@Preview(showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    TipAmountTheme {
-        MainScreen()
-
-    }
-}

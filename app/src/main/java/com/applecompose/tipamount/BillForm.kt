@@ -32,7 +32,7 @@ import com.applecompose.tipamount.widgets.RoundIconButton
 import org.w3c.dom.Text
 
 
-@ExperimentalComposeUiApi
+
 @Composable
 fun BillForm(
     modifier: Modifier = Modifier,
@@ -50,7 +50,7 @@ fun BillForm(
     val validState = remember(totalBillState.value) {
         totalBillState.value.trim().isNotEmpty()
     }
-    val keyboardController = LocalSoftwareKeyboardController.current
+    //val keyboardController = LocalSoftwareKeyboardController.current
     val sliderPositionState = remember {
         mutableStateOf(0f)
     }
@@ -83,7 +83,7 @@ fun BillForm(
                 onAction = KeyboardActions {
                     if (!validState) return@KeyboardActions
                     onValChange(totalBillState.value.trim())
-                    keyboardController?.hide()
+                    //keyboardController?.hide()
                 }
             )
             if (validState) {
