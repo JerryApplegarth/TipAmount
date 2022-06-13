@@ -32,7 +32,7 @@ import com.applecompose.tipamount.widgets.RoundIconButton
 import org.w3c.dom.Text
 
 
-@OptIn(ExperimentalComposeUiApi::class)
+@ExperimentalComposeUiApi
 @Composable
 fun BillForm(
     modifier: Modifier = Modifier,
