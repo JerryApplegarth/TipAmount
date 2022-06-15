@@ -18,13 +18,16 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
 import com.applecompose.tipamount.utils.calculateTotalPerPerson
 import com.applecompose.tipamount.utils.calculateTotalTip
 
 
+@ExperimentalComposeUiApi
 @Composable
 fun BillForm(
     modifier: Modifier = Modifier,
@@ -42,7 +45,7 @@ fun BillForm(
     val validState = remember(totalBillState.value) {
         totalBillState.value.trim().isNotEmpty()
     }
-    //val keyboardController = LocalSoftwareKeyboardController.current
+    val keyboardController = LocalSoftwareKeyboardController.current
     val sliderPositionState = remember {
         mutableStateOf(0f)
     }
@@ -75,7 +78,7 @@ fun BillForm(
                 onAction = KeyboardActions {
                     if (!validState) return@KeyboardActions
                     onValChange(totalBillState.value.trim())
-                    //keyboardController?.hide()
+                    keyboardController?.hide()
                 }
             )
             if (validState) {
@@ -146,7 +149,7 @@ fun BillForm(
                             .align(alignment = Alignment.CenterVertically)
                     )
                     Spacer(modifier.width(180.dp))
-                    //val tipAmountSateRounded: Double = String.format("%.2f", tipAmountSate.value).toDouble()
+                    //val tipAmountStateRounded: Double = String.format("%.2f", tipAmountSate.value).toDouble()
                             Text(
                         text = "$ ${tipAmountSate.value}",
                         modifier

@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import com.applecompose.tipamount.presentation.components.BillForm
 import com.applecompose.tipamount.presentation.components.AppLogo
 
+@ExperimentalComposeUiApi
 @Composable
 fun HomeScreen() {
 
