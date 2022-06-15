@@ -1,4 +1,4 @@
-package com.applecompose.tipamount.components
+package com.applecompose.tipamount.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

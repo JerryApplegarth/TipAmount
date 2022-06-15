@@ -1,4 +1,4 @@
-package com.applecompose.tipamount
+package com.applecompose.tipamount.presentation.components
 
 
 import androidx.compose.foundation.BorderStroke
@@ -18,19 +18,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
-import com.applecompose.tipamount.components.InputField
-import com.applecompose.tipamount.components.TopHeader
-import com.applecompose.tipamount.components.TopImage
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
 import com.applecompose.tipamount.utils.calculateTotalPerPerson
 import com.applecompose.tipamount.utils.calculateTotalTip
-import com.applecompose.tipamount.widgets.RoundIconButton
-import org.w3c.dom.Text
-
 
 
 @Composable

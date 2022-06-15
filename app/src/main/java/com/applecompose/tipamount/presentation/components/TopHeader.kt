@@ -1,7 +1,6 @@
-package com.applecompose.tipamount.components
+package com.applecompose.tipamount.presentation.components
 
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -15,7 +14,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.applecompose.tipamount.ui.theme.fontColorDark
+import com.applecompose.tipamount.ui.theme.fontColor
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
 
 @Preview
@@ -47,7 +46,7 @@ fun TopHeader(totalPerPerson: Double = 0.00, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.h3,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.fontColorDark
+                color = MaterialTheme.colors.fontColor
             )
         }
     }

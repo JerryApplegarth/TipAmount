@@ -1,4 +1,4 @@
-package com.applecompose.tipamount.components
+package com.applecompose.tipamount.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,6 +9,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.applecompose.tipamount.R
+
+
+
 
 @Preview
 @Composable
