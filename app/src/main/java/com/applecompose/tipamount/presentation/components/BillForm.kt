@@ -1,6 +1,7 @@
 package com.applecompose.tipamount.presentation.components
 
 
+import android.provider.ContactsContract
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
@@ -27,7 +28,7 @@ import com.applecompose.tipamount.utils.calculateTotalPerPerson
 import com.applecompose.tipamount.utils.calculateTotalTip
 
 
-@ExperimentalComposeUiApi
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun BillForm(
     modifier: Modifier = Modifier,
@@ -77,6 +78,7 @@ fun BillForm(
                 isSingleLine = true,
                 onAction = KeyboardActions {
                     if (!validState) return@KeyboardActions
+
                     onValChange(totalBillState.value.trim())
                     keyboardController?.hide()
                 }
