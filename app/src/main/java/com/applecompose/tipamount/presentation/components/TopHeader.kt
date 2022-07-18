@@ -1,6 +1,7 @@
 package com.applecompose.tipamount.presentation.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -25,7 +26,7 @@ fun TopHeader(totalPerPerson: Double = 0.00, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .height(150.dp)
             .padding(16.dp)
-            //.clip(shape = CircleShape.copy(all = CornerSize(12.dp)))
+            .clip(shape = CircleShape.copy(all = CornerSize(12.dp)))
             .clip(shape = RoundedCornerShape(corner = CornerSize(16.dp))),
         color = MaterialTheme.colors.newBackgroundColor
     ) {

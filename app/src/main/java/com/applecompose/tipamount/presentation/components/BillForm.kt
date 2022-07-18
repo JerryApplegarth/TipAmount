@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.applecompose.tipamount.ui.theme.newBackgroundColor
 import com.applecompose.tipamount.utils.calculateTotalPerPerson
 import com.applecompose.tipamount.utils.calculateTotalTip
+import kotlin.math.roundToInt
 
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -50,7 +51,7 @@ fun BillForm(
     val sliderPositionState = remember {
         mutableStateOf(0f)
     }
-    val tipPercentage = (sliderPositionState.value * 30).toInt()
+    val tipPercentage = (sliderPositionState.value * 30).roundToInt()
 
     TopImage()
     TopHeader(totalPerPerson = totalPerPersonState.value)
@@ -151,9 +152,9 @@ fun BillForm(
                             .align(alignment = Alignment.CenterVertically)
                     )
                     Spacer(modifier.width(180.dp))
-                    //val tipAmountStateRounded: Double = String.format("%.2f", tipAmountSate.value).toDouble()
+                    val tipAmountStateRounded: Double = String.format("%.2f", tipAmountSate.value).toDouble()
                             Text(
-                        text = "$ ${tipAmountSate.value}",
+                        text = "$ $tipAmountStateRounded",
                         modifier
                             .align(alignment = Alignment.CenterVertically)
                     )
