@@ -1,7 +1,6 @@
 package com.applecompose.tipamount.presentation.components
 
 
-import android.provider.ContactsContract
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
